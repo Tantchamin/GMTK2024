@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ConfigManager : MonoBehaviour
 {
-    MagicList magicList;
-    CharacterList characterList;
+    public MagicList magicList;
+    public CharacterList characterList;
 
     private static ConfigManager instance;
 
@@ -18,6 +18,8 @@ public class ConfigManager : MonoBehaviour
     private void Awake()
     {
         Init();
+        LoadResource();
+
     }
 
     void Init()
@@ -34,23 +36,8 @@ public class ConfigManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void LoadResource()
     {
-        //// Load the JSON file
-        //TextAsset magicFile = Resources.Load<TextAsset>("Magics");
-        //string magicJson = magicFile.text;
-
-        //// Deserialize the JSON into the MagicList class
-        //magicList = JsonUtility.FromJson<MagicList>(magicJson);
-
-
-        //// Load the JSON file
-        //TextAsset characterFile = Resources.Load<TextAsset>("Magics");
-        //string characterJson = characterFile.text;
-
-        //// Deserialize the JSON into the MagicList class
-        //characterList = JsonUtility.FromJson<CharacterList>(characterJson);
-
         // Load and deserialize MagicList from JSON
         magicList = LoadJsonFile<MagicList>("Magics");
 
