@@ -5,12 +5,17 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     public int characterIndex;
+    public PlayerUi playerUi;
+    public MagicPage magicPage;
 
     // Start is called before the first frame update
     void Start()
     {
-        characterIndex = PlayerPrefs.GetInt("SelectedCharacter");    
+        characterIndex = PlayerPrefs.GetInt("SelectedCharacter");
+        playerUi.ChangeCharacter(characterIndex);
+        magicPage.ChangeMagicText(characterIndex);
     }
+
 
     // Update is called once per frame
     void Update()
