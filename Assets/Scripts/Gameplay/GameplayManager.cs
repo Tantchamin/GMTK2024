@@ -14,6 +14,7 @@ public class GameplayManager : MonoBehaviour
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter");
         playerUi.ChangeCharacter(characterIndex);
         magicPage.ChangeMagicText(characterIndex);
+        magicPage.init(this);
     }
 
 
