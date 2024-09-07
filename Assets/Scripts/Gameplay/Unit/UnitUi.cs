@@ -9,7 +9,7 @@ public class UnitUi : MonoBehaviour
     [SerializeField] private TMP_Text characterNameText;
     [SerializeField] private TMP_Text characterManaText;
     [SerializeField] private Image character;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private StatusBar statusBar;
 
     // Start is called before the first frame update
     void Start()
