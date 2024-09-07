@@ -14,9 +14,7 @@ public enum GamePhase
 public class GameplayManager : MonoBehaviour
 {
     public int characterIndex;
-    public Player player;
-    public PlayerUi playerUi;
-    public Enemy enemy;
+    public Unit player;
     public EnemyManager enemyManager;
     public MagicPage magicPage;
     public CommandPage commandPage;
@@ -28,18 +26,19 @@ public class GameplayManager : MonoBehaviour
         configManager = ConfigManager.getInstance();
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter");
         playerConfig = configManager.characterList.characters[characterIndex];
-        playerUi.ChangeCharacter(characterIndex);
+        player.unitUi.ChangeCharacter(playerConfig);
         player.Init(playerConfig);
         magicPage.ChangeMagicText(characterIndex);
         magicPage.Init(this);
         commandPage.Init(this);
         enemyManager.AddAllEnemy(playerConfig);
+        enemyManager.RandomEnemy();
 
     }
 
     public void UpdatePhase(GamePhase phase)
     {
-        Enemy enemy = enemyManager.enemy;
+        Unit enemy = enemyManager.enemy;
         switch (phase)
         {
             case GamePhase.standby:

@@ -10,14 +10,10 @@ public class CommandPage : MonoBehaviour
     [SerializeField] private GameObject[] commandPages;
     [SerializeField] private TMP_Text attackText;
     [SerializeField] private TMP_Text defendText;
-    private CharacterList characterList;
-    private Character character;
 
     public void Init(GameplayManager gameplayManager)
     {
         this.gameplayManager = gameplayManager;
-        characterList = ConfigManager.getInstance().characterList;
-        character = characterList.characters[gameplayManager.characterIndex];
     }
 
     public void ChangePage(int index)
@@ -39,13 +35,13 @@ public class CommandPage : MonoBehaviour
 
     public void SelectAttack()
     {
-        Player player = gameplayManager.player;
+        Unit player = gameplayManager.player;
         attackText.text = $"Damage: {player.attack + player.buffAttack}";
     }
 
     public void SelectDefend()
     {
-        Player player = gameplayManager.player;
+        Unit player = gameplayManager.player;
         defendText.text = $"Defend: {player.defense + player.buffDefend} damage";
     }
 

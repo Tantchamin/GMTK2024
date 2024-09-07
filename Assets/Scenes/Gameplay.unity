@@ -1617,7 +1617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 308696346}
   - component: {fileID: 308696348}
-  - component: {fileID: 308696347}
+  - component: {fileID: 308696350}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -1647,21 +1647,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &308696347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308696345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a869abc7dc13a74ea7aa5ec179f18f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNameText: {fileID: 271182330}
-  playerManaText: {fileID: 1960371119}
-  playerCharacter: {fileID: 984330111}
 --- !u!114 &308696348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,7 +1656,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 308696345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22f829e12e76a4645bd7b7295c99a64d, type: 3}
+  m_Script: {fileID: 11500000, guid: e628a426bb5bbeb4ab70ce82f5dcc9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
@@ -1689,6 +1674,40 @@ MonoBehaviour:
   buffDefend: 0
   buffAttackTurn: 0
   buffDefendTurn: 0
+  characterConfig:
+    No: 
+    Name: 
+    Health: 0
+    Mana: 0
+    ManaRegen: 0
+    Attack: 0
+    Defense: 0
+    Shield: 0
+    Skill1: 
+    Skill2: 
+    Skill3: 
+    Skill4: 
+    BuffAttack: 0
+    BuffDefend: 0
+    BuffAttackTurn: 0
+    BuffDefendTurn: 0
+  unitUi: {fileID: 308696350}
+--- !u!114 &308696350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308696345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafed3298e8a114ebd5bc463475bcf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNameText: {fileID: 271182330}
+  characterManaText: {fileID: 1960371119}
+  character: {fileID: 984330111}
+  healthBar: {fileID: 0}
 --- !u!1 &325468281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,7 +3376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143, y: -72}
+  m_AnchoredPosition: {x: 144, y: -72}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771587018
@@ -3486,8 +3505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd32d820229ac6040b819cb520669255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 1924869732}
   enemyList: []
+  enemyUi: {fileID: 1924869733}
 --- !u!4 &808787506
 Transform:
   m_ObjectHideFlags: 0
@@ -3781,6 +3801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886976523}
   - component: {fileID: 886976524}
+  - component: {fileID: 886976525}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -3849,7 +3870,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 507484661}
   m_HandleRect: {fileID: 0}
@@ -3861,6 +3882,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &886976525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886976522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f670e5e2906f5e4dbec046a3872e9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 886976524}
+  unit: {fileID: 1924869732}
 --- !u!1 &911667161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4277,8 +4312,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterIndex: 0
   player: {fileID: 308696348}
-  playerUi: {fileID: 308696347}
-  enemy: {fileID: 1924869732}
   enemyManager: {fileID: 808787505}
   magicPage: {fileID: 1679181290}
   commandPage: {fileID: 2125530956}
@@ -4713,6 +4746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298072420}
   - component: {fileID: 1298072421}
+  - component: {fileID: 1298072422}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -4781,7 +4815,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 598201319}
   m_HandleRect: {fileID: 0}
@@ -4793,6 +4827,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1298072422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298072419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f670e5e2906f5e4dbec046a3872e9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 1298072421}
+  unit: {fileID: 308696348}
 --- !u!1 &1321782344
 GameObject:
   m_ObjectHideFlags: 0
@@ -5557,7 +5605,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2050891170}
   m_HandleRect: {fileID: 0}
@@ -7057,6 +7105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1924869731}
   - component: {fileID: 1924869732}
+  - component: {fileID: 1924869733}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -7095,10 +7144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1924869730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 832ff6bfd723555428da6b26c74eb7ed, type: 3}
+  m_Script: {fileID: 11500000, guid: e628a426bb5bbeb4ab70ce82f5dcc9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: 
+  playerName: 
   health: 0
   mana: 0
   manaRegen: 0
@@ -7113,6 +7162,40 @@ MonoBehaviour:
   buffDefend: 0
   buffAttackTurn: 0
   buffDefendTurn: 0
+  characterConfig:
+    No: 
+    Name: 
+    Health: 0
+    Mana: 0
+    ManaRegen: 0
+    Attack: 0
+    Defense: 0
+    Shield: 0
+    Skill1: 
+    Skill2: 
+    Skill3: 
+    Skill4: 
+    BuffAttack: 0
+    BuffDefend: 0
+    BuffAttackTurn: 0
+    BuffDefendTurn: 0
+  unitUi: {fileID: 1924869733}
+--- !u!114 &1924869733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924869730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafed3298e8a114ebd5bc463475bcf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNameText: {fileID: 771587018}
+  characterManaText: {fileID: 814203246}
+  character: {fileID: 721296644}
+  healthBar: {fileID: 886976525}
 --- !u!1 &1932165952
 GameObject:
   m_ObjectHideFlags: 0
@@ -7801,7 +7884,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1768747168}
   m_HandleRect: {fileID: 0}

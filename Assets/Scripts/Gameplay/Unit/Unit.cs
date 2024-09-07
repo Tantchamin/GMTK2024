@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     public string playerName;
     public int health;
@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public int buffDefend;
     public int buffAttackTurn;
     public int buffDefendTurn;
-    Character characterConfig;
+    public Character characterConfig;
+    public UnitUi unitUi;
 
     public void Init(Character character)
     {

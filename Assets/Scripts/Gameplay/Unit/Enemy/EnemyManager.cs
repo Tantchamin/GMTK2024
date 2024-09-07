@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public Enemy enemy;
+    public Unit enemy;
     public List<Character> enemyList;
+    public UnitUi enemyUi;
 
     public void AddAllEnemy(Character playerConfig)
     {
@@ -17,15 +18,16 @@ public class EnemyManager : MonoBehaviour
         enemyList.Remove(playerConfig);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void RandomEnemy()
     {
-        
+        int index = Random.Range(0, enemyList.Count);
+        ChangeEnemyCharacter(index);
+        enemyList.RemoveAt(index);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeEnemyCharacter(int index)
     {
-        
+        enemy.Init(enemyList[index]);
+        enemyUi.ChangeCharacter(enemyList[index]);
     }
 }
