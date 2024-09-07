@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public int buffDefend;
     public int buffAttackTurn;
     public int buffDefendTurn;
+    Character characterConfig;
 
     public void Init(Character character)
     {
@@ -37,17 +38,31 @@ public class Player : MonoBehaviour
         buffDefend = character.BuffDefend;
         buffAttackTurn = character.BuffAttackTurn;
         buffDefendTurn = character.BuffDefendTurn;
+        characterConfig = character;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void IncreaseManaTurn()
     {
-        
+        if (mana < characterConfig.Mana)
+        {
+            mana += manaRegen;
+            if (mana > characterConfig.Mana) mana = characterConfig.Mana;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DecreaseAllBuff()
     {
-        
+        DecreaseBuff(buffAttack, buffAttackTurn);
+        DecreaseBuff(buffDefend, buffDefendTurn);
     }
+
+    void DecreaseBuff(int buffStatus, int buffTurn)
+    {
+        if (buffTurn > 0)
+        {
+            buffTurn--;
+            if (buffTurn == 0) buffStatus = 0;
+        }
+    }
+
 }

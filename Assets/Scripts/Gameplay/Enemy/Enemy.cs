@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public int buffDefend;
     public int buffAttackTurn;
     public int buffDefendTurn;
+    Character characterConfig;
 
     public void Init(Character character)
     {
@@ -37,5 +38,30 @@ public class Enemy : MonoBehaviour
         buffDefend = character.BuffDefend;
         buffAttackTurn = character.BuffAttackTurn;
         buffDefendTurn = character.BuffDefendTurn;
+        characterConfig = character;
+    }
+
+    public void IncreaseManaTurn()
+    {
+        if (mana < characterConfig.Mana)
+        {
+            mana += manaRegen;
+            if (mana > characterConfig.Mana) mana = characterConfig.Mana;
+        }
+    }
+
+    public void DecreaseAllBuff()
+    {
+        DecreaseBuff(buffAttack, buffAttackTurn);
+        DecreaseBuff(buffDefend, buffDefendTurn);
+    }
+
+    void DecreaseBuff(int buffStatus, int buffTurn)
+    {
+        if (buffTurn > 0)
+        {
+            buffTurn--;
+            if (buffTurn == 0) buffStatus = 0;
+        }
     }
 }

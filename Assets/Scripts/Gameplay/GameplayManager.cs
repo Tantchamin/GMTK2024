@@ -17,13 +17,12 @@ public class GameplayManager : MonoBehaviour
     public Player player;
     public PlayerUi playerUi;
     public Enemy enemy;
+    public EnemyManager enemyManager;
     public MagicPage magicPage;
     public CommandPage commandPage;
     ConfigManager configManager;
     Character playerConfig;
-    public List<Character> enemyList;
 
-    // Start is called before the first frame update
     void Start()
     {
         configManager = ConfigManager.getInstance();
@@ -34,22 +33,18 @@ public class GameplayManager : MonoBehaviour
         magicPage.ChangeMagicText(characterIndex);
         magicPage.Init(this);
         commandPage.Init(this);
-
-        foreach(Character character in configManager.characterList.characters)
-        {
-            enemyList.Add(character);
-        }
-        enemyList.Remove(playerConfig);
+        enemyManager.AddAllEnemy(playerConfig);
 
     }
 
     public void UpdatePhase(GamePhase phase)
     {
+        Enemy enemy = enemyManager.enemy;
         switch (phase)
         {
             case GamePhase.standby:
-                IncreaseManaTurn(player.mana, configManager.characterList.characters[characterIndex]);
-
+                player.IncreaseManaTurn();
+                enemy.IncreaseManaTurn();
                 break;
             case GamePhase.command:
                 break;
@@ -58,29 +53,10 @@ public class GameplayManager : MonoBehaviour
             case GamePhase.enemyAction:
                 break;
             case GamePhase.end:
-                DecreaseBuffTurn(player.buffAttack, player.buffAttackTurn);
-                DecreaseBuffTurn(player.buffDefend, player.buffDefendTurn);
-                DecreaseBuffTurn(enemy.buffAttack, enemy.buffAttackTurn);
-                DecreaseBuffTurn(enemy.buffDefend, enemy.buffDefendTurn);
+                player.DecreaseAllBuff();
+                enemy.DecreaseAllBuff();
                 break;
         }
     }
 
-    void IncreaseManaTurn(int characterMana, Character characterConfig)
-    {
-        if (characterMana < characterConfig.Mana)
-        {
-            characterMana += characterConfig.ManaRegen;
-            if (characterMana > characterConfig.Mana) characterMana = characterConfig.Mana;
-        }
-    }
-
-    void DecreaseBuffTurn(int buffStatus, int buffTurn)
-    {
-        if (buffTurn > 0)
-        {
-            buffTurn--;
-            if (buffTurn == 0) buffStatus = 0;
-        }
-    }
 }
