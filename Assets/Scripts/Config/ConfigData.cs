@@ -28,8 +28,6 @@ public class Character
 {
     public string No;
     public string Name;
-    public string Type;
-    public string MagicVisual;
     public int Health;
     public int Mana;
     public int ManaRegen;
@@ -40,6 +38,10 @@ public class Character
     public string Skill2;
     public string Skill3;
     public string Skill4;
+    public int BuffAttack;
+    public int BuffDefend;
+    public int BuffAttackTurn;
+    public int BuffDefendTurn;
 }
 
 [System.Serializable]

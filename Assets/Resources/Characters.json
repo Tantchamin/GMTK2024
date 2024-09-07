@@ -12,7 +12,11 @@
       "Skill1": "magic1",
       "Skill2": "magic2",
       "Skill3": "magic3",
-      "Skill4": "magic4"
+      "Skill4": "magic4",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char2",
@@ -20,13 +24,17 @@
       "Health": 100,
       "Mana": 120,
       "ManaRegen": 15,
-      "Attack": 5,
+      "Attack": 10,
       "Defense": 10,
       "Shield": 0,
       "Skill1": "magic5",
       "Skill2": "magic6",
       "Skill3": "magic7",
-      "Skill4": "magic8"
+      "Skill4": "magic8",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char3",
@@ -40,7 +48,11 @@
       "Skill1": "magic9",
       "Skill2": "magic10",
       "Skill3": "magic11",
-      "Skill4": "magic12"
+      "Skill4": "magic12",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char4",
@@ -48,13 +60,17 @@
       "Health": 100,
       "Mana": 100,
       "ManaRegen": 10,
-      "Attack": 5,
+      "Attack": 15,
       "Defense": 15,
       "Shield": 0,
       "Skill1": "magic13",
       "Skill2": "magic14",
       "Skill3": "magic15",
-      "Skill4": "magic16"
+      "Skill4": "magic16",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char5",
@@ -62,13 +78,17 @@
       "Health": 100,
       "Mana": 90,
       "ManaRegen": 25,
-      "Attack": 6,
+      "Attack": 10,
       "Defense": 10,
       "Shield": 5,
       "Skill1": "magic17",
       "Skill2": "magic18",
       "Skill3": "magic19",
-      "Skill4": "magic20"
+      "Skill4": "magic20",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char6",
@@ -76,13 +96,17 @@
       "Health": 90,
       "Mana": 100,
       "ManaRegen": 15,
-      "Attack": 10,
+      "Attack": 0,
       "Defense": 0,
       "Shield": 0,
       "Skill1": "magic21",
       "Skill2": "magic22",
       "Skill3": "magic23",
-      "Skill4": "magic24"
+      "Skill4": "magic24",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char7",
@@ -90,13 +114,17 @@
       "Health": 100,
       "Mana": 100,
       "ManaRegen": 10,
-      "Attack": 12,
+      "Attack": 8,
       "Defense": 8,
       "Shield": 0,
       "Skill1": "magic25",
       "Skill2": "magic26",
       "Skill3": "magic27",
-      "Skill4": "magic28"
+      "Skill4": "magic28",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char8",
@@ -110,7 +138,11 @@
       "Skill1": "magic29",
       "Skill2": "magic30",
       "Skill3": "magic31",
-      "Skill4": "magic32"
+      "Skill4": "magic32",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     },
     {
       "No": "char9",
@@ -124,7 +156,11 @@
       "Skill1": "magic33",
       "Skill2": "magic34",
       "Skill3": "magic35",
-      "Skill4": "magic36"
+      "Skill4": "magic36",
+      "BuffAttack": 0,
+      "BuffDefend": 0,
+      "BuffAttackTurn": 0,
+      "BuffDefendTurn": 0
     }
   ]
 }

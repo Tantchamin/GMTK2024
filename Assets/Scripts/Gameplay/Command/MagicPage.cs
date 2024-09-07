@@ -26,7 +26,7 @@ public class MagicPage : MonoBehaviour
     private GameplayManager gameplayManager;
     private string[] characterSkills;
 
-    public void init(GameplayManager gameplayManager)
+    public void Init(GameplayManager gameplayManager)
     {
         this.gameplayManager = gameplayManager;
     }
