@@ -26,8 +26,8 @@ public class GameplayManager : MonoBehaviour
         configManager = ConfigManager.getInstance();
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter");
         playerConfig = configManager.characterList.characters[characterIndex];
-        player.unitUi.ChangeCharacter(playerConfig);
         player.Init(playerConfig);
+        player.unitUi.ChangeCharacter(player);
         magicPage.ChangeMagicText(characterIndex);
         magicPage.Init(this);
         commandPage.Init(this);

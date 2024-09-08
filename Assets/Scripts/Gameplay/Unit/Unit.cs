@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public string playerName;
+    public string unitName;
     public int health;
     public int mana;
     public int manaRegen;
@@ -24,7 +24,7 @@ public class Unit : MonoBehaviour
 
     public void Init(Character character)
     {
-        playerName = character.Name;
+        unitName = character.Name;
         health = character.Health;
         mana = character.Mana;
         manaRegen = character.ManaRegen;

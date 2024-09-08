@@ -6,7 +6,6 @@ public class EnemyManager : MonoBehaviour
 {
     public Unit enemy;
     public List<Character> enemyList;
-    public UnitUi enemyUi;
 
     public void AddAllEnemy(Character playerConfig)
     {
@@ -28,6 +27,6 @@ public class EnemyManager : MonoBehaviour
     public void ChangeEnemyCharacter(int index)
     {
         enemy.Init(enemyList[index]);
-        enemyUi.ChangeCharacter(enemyList[index]);
+        enemy.unitUi.ChangeCharacter(enemy);
     }
 }

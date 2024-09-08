@@ -17,11 +17,12 @@ public class UnitUi : MonoBehaviour
 
     }
 
-    public void ChangeCharacter(Character character)
+    public void ChangeCharacter(Unit unit)
     {
-        characterNameText.text = character.Name;
-        characterManaText.text = character.Mana.ToString();
-
+        characterNameText.text = unit.unitName;
+        characterManaText.text = unit.mana.ToString();
+        statusBar.SetMaxHealth(unit);
+        statusBar.SetMaxMana(unit);
     }
 
     // Update is called once per frame
