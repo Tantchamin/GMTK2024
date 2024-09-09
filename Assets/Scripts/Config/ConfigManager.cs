@@ -44,11 +44,6 @@ public class ConfigManager : MonoBehaviour
         // Load and deserialize CharacterList from JSON
         characterList = LoadJsonFile<CharacterList>("Characters");
 
-        for(int i =0; i <characterList.characters.Length; i++)
-        {
-            Debug.Log(characterList.characters[i].Name);
-        }
-
     }
     
     private T LoadJsonFile<T>(string fileName)

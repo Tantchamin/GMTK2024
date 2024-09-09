@@ -42,12 +42,32 @@ public class Unit : MonoBehaviour
         characterConfig = character;
     }
 
+    public void HealthAdjust(int amount)
+    {
+        health += amount;
+        if (health > characterConfig.Health) health = characterConfig.Health;
+        unitUi.statusBar.SetHealth(this);
+
+        if(health <= 0)
+        {
+            Debug.Log("defeat");
+        }
+    }
+
+    public void ManaAdjust(int amount)
+    {
+        mana += amount;
+        if (mana > characterConfig.Mana) mana = characterConfig.Mana;
+        unitUi.statusBar.SetMana(this);
+    }
+
     public void IncreaseManaTurn()
     {
         if (mana < characterConfig.Mana)
         {
             mana += manaRegen;
             if (mana > characterConfig.Mana) mana = characterConfig.Mana;
+            unitUi.statusBar.SetHealth(this);
         }
     }
 

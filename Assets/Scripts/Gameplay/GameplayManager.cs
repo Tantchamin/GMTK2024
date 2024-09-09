@@ -20,6 +20,8 @@ public class GameplayManager : MonoBehaviour
     public CommandPage commandPage;
     ConfigManager configManager;
     Character playerConfig;
+    public bool isMagic = false, isAttack = false, isDefense = false;
+    public Magic selectedMagic;
 
     void Start()
     {
@@ -28,11 +30,25 @@ public class GameplayManager : MonoBehaviour
         playerConfig = configManager.characterList.characters[characterIndex];
         player.Init(playerConfig);
         player.unitUi.ChangeCharacter(player);
-        magicPage.ChangeMagicText(characterIndex);
         magicPage.Init(this);
         commandPage.Init(this);
         enemyManager.AddAllEnemy(playerConfig);
         enemyManager.RandomEnemy();
+
+    }
+
+    public void CommandAttack()
+    {
+        enemyManager.enemy.HealthAdjust(-player.attack + player.buffAttack);
+    }
+
+    public void CommandDefend()
+    {
+        isDefense = true;
+    }
+
+    public void SetCommand()
+    {
 
     }
 
@@ -48,12 +64,26 @@ public class GameplayManager : MonoBehaviour
             case GamePhase.command:
                 break;
             case GamePhase.playerAction:
+                if(isAttack)
+                {
+
+                }
+                else if(isMagic)
+                {
+
+                }
+                UpdatePhase(GamePhase.enemyAction);
                 break;
             case GamePhase.enemyAction:
+                UpdatePhase(GamePhase.end);
                 break;
             case GamePhase.end:
                 player.DecreaseAllBuff();
                 enemy.DecreaseAllBuff();
+                isAttack = false;
+                isMagic = false;
+                isDefense = false;
+                UpdatePhase(GamePhase.standby);
                 break;
         }
     }

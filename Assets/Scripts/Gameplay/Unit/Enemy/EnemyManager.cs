@@ -21,12 +21,16 @@ public class EnemyManager : MonoBehaviour
     {
         int index = Random.Range(0, enemyList.Count);
         ChangeEnemyCharacter(index);
-        enemyList.RemoveAt(index);
     }
 
     public void ChangeEnemyCharacter(int index)
     {
         enemy.Init(enemyList[index]);
         enemy.unitUi.ChangeCharacter(enemy);
+    }
+
+    public void RemoveEnemy(Character character)
+    {
+        enemyList.Remove(character);
     }
 }

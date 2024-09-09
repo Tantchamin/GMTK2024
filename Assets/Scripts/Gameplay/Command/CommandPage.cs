@@ -47,12 +47,14 @@ public class CommandPage : MonoBehaviour
 
     public void UseAttack()
     {
-
+        gameplayManager.CommandAttack();
+        gameplayManager.UpdatePhase(GamePhase.playerAction);
     }
 
     public void UseDefend()
     {
-
+        gameplayManager.CommandDefend();
+        gameplayManager.UpdatePhase(GamePhase.playerAction);
     }
 
 }

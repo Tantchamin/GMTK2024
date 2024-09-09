@@ -25,22 +25,24 @@ public class MagicPage : MonoBehaviour
     [SerializeField] private TMP_Text manaCostText;
     private GameplayManager gameplayManager;
     private string[] characterSkills;
+    public Magic selectedMagic;
 
     public void Init(GameplayManager gameplayManager)
     {
         this.gameplayManager = gameplayManager;
+        ChangeMagicText(gameplayManager.characterIndex);
     }
 
     public void ChangeMagicText(int characterIndex)
     {
         MagicList magicList = ConfigManager.getInstance().magicList;
-        CharacterList characterList = ConfigManager.getInstance().characterList;
+        Unit player = gameplayManager.player;
 
         characterSkills = new string[] {
-            characterList.characters[characterIndex].Skill1,
-            characterList.characters[characterIndex].Skill2,
-            characterList.characters[characterIndex].Skill3,
-            characterList.characters[characterIndex].Skill4, 
+            player.skill1,
+            player.skill2,
+            player.skill3,
+            player.skill4, 
         };
 
         TMP_Text[] magicTexts = { magicText1, magicText2, magicText3, magicText4 };
@@ -70,6 +72,8 @@ public class MagicPage : MonoBehaviour
         buffTurnText.text = $"Buff turn: {magic.BuffTurn}";
         regenManaText.text = $"Regenerate mana: {magic.RegenMana}";
         manaCostText.text = $"Mana cost: {magic.ManaCost}";
+
+        selectedMagic = magic;
     }
 
     public void CancelMagic()
@@ -80,7 +84,7 @@ public class MagicPage : MonoBehaviour
 
     public void UseMagic()
     {
-
+        gameplayManager.UpdatePhase(GamePhase.playerAction);
     }
 
 }
