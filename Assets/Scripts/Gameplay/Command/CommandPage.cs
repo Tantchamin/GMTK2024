@@ -57,4 +57,11 @@ public class CommandPage : MonoBehaviour
         gameplayManager.UpdatePhase(GamePhase.playerAction);
     }
 
+
+    public void UseChangeForm()
+    {
+        Unit player = gameplayManager.player;
+        player.ChangeForm();
+    }
+
 }

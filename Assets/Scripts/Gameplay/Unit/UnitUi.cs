@@ -11,10 +11,9 @@ public class UnitUi : MonoBehaviour
     [SerializeField] private Image character;
     public StatusBar statusBar;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ChangeMana(Unit unit)
     {
-
+        characterManaText.text = $"{unit.mana}";
     }
 
     public void ChangeCharacter(Unit unit)
@@ -25,9 +24,4 @@ public class UnitUi : MonoBehaviour
         statusBar.SetMaxMana(unit);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

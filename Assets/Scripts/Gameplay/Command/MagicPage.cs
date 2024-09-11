@@ -23,6 +23,7 @@ public class MagicPage : MonoBehaviour
     [SerializeField] private TMP_Text buffTurnText;
     [SerializeField] private TMP_Text regenManaText;
     [SerializeField] private TMP_Text manaCostText;
+    [SerializeField] private Button castButton;
     private GameplayManager gameplayManager;
     private string[] characterSkills;
     public Magic selectedMagic;
@@ -63,7 +64,7 @@ public class MagicPage : MonoBehaviour
         statusPage.SetActive(true);
 
         nameText.text = $"{magic.Name} : \"{magic.Description}\"";
-        damageText.text = $"Damage: {magic.Damage}";
+        damageText.text = $"Damage: {magic.Damage + gameplayManager.player.attack + gameplayManager.player.buffAttack}";
         shieldText.text = $"Shield: {magic.Shield}";
         healText.text = $"Heal: {magic.Heal}";
         accuracyText.text = $"Accuracy: {magic.Accuracy}";
@@ -73,6 +74,7 @@ public class MagicPage : MonoBehaviour
         regenManaText.text = $"Regenerate mana: {magic.RegenMana}";
         manaCostText.text = $"Mana cost: {magic.ManaCost}";
 
+        castButton.interactable = gameplayManager.player.mana >= magic.ManaCost;
         selectedMagic = magic;
     }
 
@@ -84,7 +86,7 @@ public class MagicPage : MonoBehaviour
 
     public void UseMagic()
     {
-        gameplayManager.UpdatePhase(GamePhase.playerAction);
+        gameplayManager.CommandMagic(selectedMagic);
     }
 
 }

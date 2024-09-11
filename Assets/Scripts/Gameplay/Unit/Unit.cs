@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Unit : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Unit : MonoBehaviour
     public int buffDefendTurn;
     public Character characterConfig;
     public UnitUi unitUi;
+    public List<Magic> unitMagics;
+    public bool isMagicalForm = true;
 
     public void Init(Character character)
     {
@@ -40,10 +43,25 @@ public class Unit : MonoBehaviour
         buffAttackTurn = character.BuffAttackTurn;
         buffDefendTurn = character.BuffDefendTurn;
         characterConfig = character;
+
+        string[] characterSkills = new string[] {
+            skill1,
+            skill2,
+            skill3,
+            skill4,
+        };
+
+        for (int index = 0; index < characterSkills.Length; index++)
+        {
+            MagicList magicList = ConfigManager.getInstance().magicList;
+            Magic magic = Array.Find(magicList.magics, magic => magic.No == characterSkills[index]);
+            unitMagics.Add(magic);
+        }
     }
 
     public void HealthAdjust(int amount)
     {
+        if (!isMagicalForm && amount < 0) amount *= 2; 
         health += amount;
         if (health > characterConfig.Health) health = characterConfig.Health;
         unitUi.statusBar.SetHealth(this);
@@ -58,6 +76,7 @@ public class Unit : MonoBehaviour
     {
         mana += amount;
         if (mana > characterConfig.Mana) mana = characterConfig.Mana;
+        unitUi.ChangeMana(this);
         unitUi.statusBar.SetMana(this);
     }
 
@@ -84,6 +103,20 @@ public class Unit : MonoBehaviour
             buffTurn--;
             if (buffTurn == 0) buffStatus = 0;
         }
+    }
+
+    public void ChangeForm()
+    {
+        if (isMagicalForm)
+        {
+
+        }
+        else
+        {
+
+        }
+        isMagicalForm = !isMagicalForm;
+
     }
 
 }
