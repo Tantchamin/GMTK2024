@@ -58,7 +58,8 @@ public class GameplayManager : MonoBehaviour
         int successChance = Random.Range(1, 100);
         if (successChance > selectedMagic.Accuracy) return;
         user.HealthAdjust(selectedMagic.Heal);
-        target.HealthAdjust(-(selectedMagic.Damage + user.attack + user.buffAttack));
+        int damage = CalculateDamage(user, target, false, selectedMagic);
+        target.HealthAdjust(damage);
         user.ManaAdjust(-(selectedMagic.ManaCost + selectedMagic.RegenMana));
         user.shield += selectedMagic.Shield;
         if (selectedMagic.BuffAttack != 0)
@@ -73,9 +74,14 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
-    public void SetCommand()
+    int CalculateDamage(Unit user, Unit target, bool isTargetDefend, Magic magic = null)
     {
-
+        int baseDamage = user.attack + user.buffAttack;
+        int userDamage = magic != null ? baseDamage + magic.Damage : baseDamage;
+        int targetDefense = target.defense + target.buffDefend;
+        int damage = isTargetDefend ? userDamage - targetDefense*2 : userDamage - targetDefense;
+        if (damage < 0) damage = 0;
+        return -damage;
     }
 
     public void UpdatePhase(GamePhase phase)
@@ -94,7 +100,7 @@ public class GameplayManager : MonoBehaviour
             case GamePhase.playerAction:
                 if(isAttack)
                 {
-                    enemy.HealthAdjust(-player.attack + player.buffAttack);
+                    enemy.HealthAdjust(-(player.attack + player.buffAttack - enemy.defense));
                 }
                 else if(isMagic)
                 {
@@ -103,7 +109,18 @@ public class GameplayManager : MonoBehaviour
                 UpdatePhase(GamePhase.enemyAction);
                 break;
             case GamePhase.enemyAction:
-                Debug.Log("enemy phase");
+                int damage = 0;
+
+                if (isEnemyAttack)
+                {
+                    damage = CalculateDamage(enemy, player, isDefense);
+                    player.HealthAdjust(damage);
+
+                }
+                else if(isEnemyMagic)
+                {
+                    UseMagic(enemy, player);
+                }
                 UpdatePhase(GamePhase.end);
                 break;
             case GamePhase.end:
