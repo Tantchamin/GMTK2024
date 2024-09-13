@@ -14,6 +14,7 @@ public class UnitUi : MonoBehaviour
 
     public void ChangeMana(Unit unit)
     {
+        statusBar.SetMana(unit);
         characterManaText.text = $"{unit.mana}";
     }
 
@@ -29,12 +30,12 @@ public class UnitUi : MonoBehaviour
 
     public void ChangeCharacterForm(Unit unit)
     {
-        
+        Sprite characterImage = FindCharacterImage(unit.unitName, unit.isMagicalForm);
+        character.sprite = characterImage;
     }
 
     Sprite FindCharacterImage(string unitName, bool isMagicalForm)
     {
-        Debug.Log(isMagicalForm);
         ConfigManager configManager = ConfigManager.getInstance();
         string findName = isMagicalForm ? $"{unitName} Transform" : $"{unitName} Normal";
         Sprite characterSprite = Array.Find(configManager.characterSprites, characterSprite => characterSprite.name == findName);

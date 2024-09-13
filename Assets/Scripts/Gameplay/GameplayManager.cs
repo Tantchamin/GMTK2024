@@ -33,7 +33,7 @@ public class GameplayManager : MonoBehaviour
         commandPage.Init(this);
         enemyManager.AddAllEnemy(playerConfig);
         enemyManager.RandomEnemy();
-
+        UpdatePhase(GamePhase.standby);
     }
 
     public void CommandAttack()
@@ -80,7 +80,7 @@ public class GameplayManager : MonoBehaviour
         int userDamage = magic != null ? baseDamage + magic.Damage : baseDamage;
         int targetDefense = target.defense + target.buffDefend;
         int damage = isTargetDefend ? userDamage - targetDefense*2 : userDamage - targetDefense;
-        if (damage < 0) damage = 0;
+        if (damage < 0) damage = 1;
         return -damage;
     }
 
@@ -92,6 +92,8 @@ public class GameplayManager : MonoBehaviour
             case GamePhase.standby:
                 player.IncreaseManaTurn();
                 enemy.IncreaseManaTurn();
+                CheckCharacterMana(player);
+                CheckCharacterMana(enemy);
                 UpdatePhase(GamePhase.command);
                 break;
             case GamePhase.command:
@@ -100,7 +102,7 @@ public class GameplayManager : MonoBehaviour
             case GamePhase.playerAction:
                 if(isAttack)
                 {
-                    enemy.HealthAdjust(-(player.attack + player.buffAttack - enemy.defense));
+                    enemy.HealthAdjust(CalculateDamage(player, enemy, false));
                 }
                 else if(isMagic)
                 {
@@ -131,6 +133,8 @@ public class GameplayManager : MonoBehaviour
                 isDefense = false;
                 isEnemyAttack = false;
                 isEnemyMagic = false;
+                CheckCharacterMana(player);
+                CheckCharacterMana(enemy);
                 UpdatePhase(GamePhase.standby);
                 break;
         }
@@ -140,11 +144,11 @@ public class GameplayManager : MonoBehaviour
     {
         if(unit.mana < 20)
         {
-            unit.ChangeForm();
+            unit.ChangeForm(false);
         }
-        if(!unit.isMagicalForm && unit.mana > 20)
+        if(unit.isMagicalForm == false && unit.mana > 20)
         {
-            
+            unit.ChangeForm(true);
         }
     }
 
@@ -163,12 +167,14 @@ public class GameplayManager : MonoBehaviour
         if (randomCommand == 0)
         {
             isEnemyAttack = true;
+            Debug.Log("enemy attack");
         }
         else if (randomCommand == 1)
         {
             int randomMagic = Random.Range(0, usableEnemyMagics.Count);
             selectedEnemyMagic = usableEnemyMagics[randomMagic];
             isEnemyMagic = true;
+            Debug.Log(selectedEnemyMagic.Name);
         }
     }
 

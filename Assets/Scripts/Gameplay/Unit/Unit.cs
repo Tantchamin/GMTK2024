@@ -77,7 +77,6 @@ public class Unit : MonoBehaviour
         mana += amount;
         if (mana > characterConfig.Mana) mana = characterConfig.Mana;
         unitUi.ChangeMana(this);
-        unitUi.statusBar.SetMana(this);
     }
 
     public void IncreaseManaTurn()
@@ -86,7 +85,7 @@ public class Unit : MonoBehaviour
         {
             mana += manaRegen;
             if (mana > characterConfig.Mana) mana = characterConfig.Mana;
-            unitUi.statusBar.SetHealth(this);
+            unitUi.ChangeMana(this);
         }
     }
 
@@ -105,18 +104,10 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void ChangeForm()
+    public void ChangeForm(bool isMagicalForm)
     {
-        if (isMagicalForm)
-        {
-
-        }
-        else
-        {
-
-        }
-        isMagicalForm = !isMagicalForm;
-
+        this.isMagicalForm = isMagicalForm;
+        unitUi.ChangeCharacterForm(this);
     }
 
 }

@@ -43,7 +43,7 @@ public class CommandPage : MonoBehaviour
     public void SelectDefend()
     {
         Unit player = gameplayManager.player;
-        defendText.text = $"Defend: {player.defense + player.buffDefend} damage";
+        defendText.text = $"Reduce the damage from enemy attack";
     }
 
     public void UseAttack()
@@ -62,7 +62,7 @@ public class CommandPage : MonoBehaviour
     public void UseChangeForm()
     {
         Unit player = gameplayManager.player;
-        player.ChangeForm();
+        //player.ChangeForm();
     }
 
 }

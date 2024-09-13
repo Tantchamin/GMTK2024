@@ -87,6 +87,7 @@ public class MagicPage : MonoBehaviour
     public void UseMagic()
     {
         gameplayManager.CommandMagic(selectedMagic);
+        CancelMagic();
     }
 
 }
