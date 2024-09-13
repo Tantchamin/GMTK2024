@@ -8,6 +8,7 @@ public class CommandPage : MonoBehaviour
 {
     [SerializeField] private GameplayManager gameplayManager;
     [SerializeField] private GameObject[] commandPages;
+    [SerializeField] private Button[] commandButtons;
     [SerializeField] private TMP_Text attackText;
     [SerializeField] private TMP_Text defendText;
 

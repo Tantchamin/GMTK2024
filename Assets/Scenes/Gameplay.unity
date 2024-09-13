@@ -1758,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &285637337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2093,7 +2093,7 @@ MonoBehaviour:
     BuffDefendTurn: 0
   unitUi: {fileID: 308696350}
   unitMagics: []
-  isMagicalForm: 0
+  isMagicalForm: 1
 --- !u!114 &308696350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,7 +3756,7 @@ RectTransform:
   m_GameObject: {fileID: 721296642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1924869731}
@@ -3764,7 +3764,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 630, y: 197}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721296644
 MonoBehaviour:
@@ -3786,7 +3786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4590bad8c238a0642a920fdfadf05779, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4723,7 +4723,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -630, y: 197}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984330111
 MonoBehaviour:
@@ -4745,7 +4745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9295a6aaa4b8d714bbce346daf7bd9e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4817,7 +4817,7 @@ MonoBehaviour:
     RegenMana: 0
     ManaCost: 0
     Description: 
-  enemyMagic:
+  selectedEnemyMagic:
     No: 
     Name: 
     Type: 
@@ -4904,7 +4904,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defend
+  m_text: Transform
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7025,7 +7025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1719276834
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8314,7 +8314,7 @@ MonoBehaviour:
     BuffDefendTurn: 0
   unitUi: {fileID: 1924869733}
   unitMagics: []
-  isMagicalForm: 0
+  isMagicalForm: 1
 --- !u!114 &1924869733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9475,6 +9475,12 @@ MonoBehaviour:
   - {fileID: 332782906}
   - {fileID: 1679181288}
   - {fileID: 1766499804}
+  - {fileID: 1719276833}
+  commandButtons:
+  - {fileID: 1237480527}
+  - {fileID: 1387053162}
+  - {fileID: 1891190067}
+  - {fileID: 285637338}
   attackText: {fileID: 1646608500}
   defendText: {fileID: 1755035966}
 --- !u!1 &2132449496

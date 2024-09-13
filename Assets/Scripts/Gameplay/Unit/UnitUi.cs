@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UnitUi : MonoBehaviour
 {
@@ -22,6 +23,21 @@ public class UnitUi : MonoBehaviour
         characterManaText.text = unit.mana.ToString();
         statusBar.SetMaxHealth(unit);
         statusBar.SetMaxMana(unit);
+        Sprite characterImage = FindCharacterImage(unit.unitName, unit.isMagicalForm);
+        character.sprite = characterImage;
     }
 
+    public void ChangeCharacterForm(Unit unit)
+    {
+        
+    }
+
+    Sprite FindCharacterImage(string unitName, bool isMagicalForm)
+    {
+        Debug.Log(isMagicalForm);
+        ConfigManager configManager = ConfigManager.getInstance();
+        string findName = isMagicalForm ? $"{unitName} Transform" : $"{unitName} Normal";
+        Sprite characterSprite = Array.Find(configManager.characterSprites, characterSprite => characterSprite.name == findName);
+        return characterSprite;
+    }
 }

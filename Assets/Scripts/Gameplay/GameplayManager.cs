@@ -136,6 +136,18 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    void CheckCharacterMana(Unit unit)
+    {
+        if(unit.mana < 20)
+        {
+            unit.ChangeForm();
+        }
+        if(!unit.isMagicalForm && unit.mana > 20)
+        {
+            
+        }
+    }
+
     void RandomEnemyCommand(Unit enemy)
     {
         List<Magic> usableEnemyMagics = new();

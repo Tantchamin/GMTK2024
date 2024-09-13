@@ -7,6 +7,7 @@ public class ConfigManager : MonoBehaviour
 {
     public MagicList magicList;
     public CharacterList characterList;
+    public Sprite[] characterSprites;
 
     private static ConfigManager instance;
 
@@ -43,6 +44,9 @@ public class ConfigManager : MonoBehaviour
 
         // Load and deserialize CharacterList from JSON
         characterList = LoadJsonFile<CharacterList>("Characters");
+
+        // Load all sprites from the "Sprites" folder inside the Resources folder
+        characterSprites = Resources.LoadAll<Sprite>("Sprites/Characters");
 
     }
     
